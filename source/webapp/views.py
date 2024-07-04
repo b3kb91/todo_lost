@@ -31,8 +31,11 @@ def create_todo(request):
 
 def todo_delete(request, *args, pk, **kwargs):
     todo = get_object_or_404(ToDo, pk=pk)
-    todo.delete()
-    return redirect("todo")
+    if request.method == "GET":
+        return render(request, "delete_todo.html", context={"todo": todo})
+    else:
+        todo.delete()
+        return redirect("todo")
 
 
 def todo_detail(request, *args, pk, **kwargs):
