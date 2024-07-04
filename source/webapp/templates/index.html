@@ -15,7 +15,8 @@
                     <h5 class="card-subtitle mb-2 text-body-secondary"><strong>Статус:</strong> {{ to_do.get_status_display }}</h5>
                     <p class="card-text"><strong>Описание:</strong><br>{{ to_do.description }}</p>
                     <p class="card-text"><strong>Дата:</strong><br>{{ to_do.date_completion }}</p>
-                    <a href="{% url 'todo_detail' to_do.pk %}" class="card-link">Детальный просмотр</a>
+                    <a href="{% url 'todo_detail' to_do.pk %}" class="card-link">Детальный просмотр</a><br>
+                    <a href="{% url 'todo_update' to_do.pk %}" class="card-link">Редактировать</a>    
                     </div>
                 </div>
             </div>
