@@ -30,4 +30,4 @@ class IssueAdmin(admin.ModelAdmin):
     readonly_fields = ['types']
 
 
-admin.site.register(Issue, IssueAdmin)
+admin.site.register(Issue, IssueAdmin, TypeAdmin, StatusAdmin)
