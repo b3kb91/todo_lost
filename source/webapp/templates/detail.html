@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+    <div class="card mt-3" style="width: 18rem;">
+        <div class="card-body">
+            <h6 class="card-subtitle mb-2 text-body-secondary"><strong>Статус:</strong> {{ issue.get_status_display}}</h6>
+            <p class="card-text"><strong>Подробное описание:</strong><br>{{ issue.description_detail }}</p>
+            <p class="card-text"><strong>Описание:</strong><br>{{ issue.description }}</p>
+            <p class="card-text"><strong>Дата:</strong><br>{{ issue.date_completion }}</p>
+            <a href="{% url 'main' %}" class="card-link">На главную</a><br>
+            <br><a href="{% url 'delete' issue.pk  %}" class="card-link text-danger">Удалить пост</a>
+        </div>         
+    </div>
+{% endblock %}

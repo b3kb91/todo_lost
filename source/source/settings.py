@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'source.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'todo_lists',
+        'NAME': 'issue',
         'USER': 'postgres',
         'PASSWORD': 'aiko22392',
         'HOST': 'localhost',

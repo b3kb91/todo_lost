@@ -1,26 +1,25 @@
 from django import forms
 from django.core.exceptions import ValidationError
-from webapp.models import ToDo
+from webapp.models import Issue
 from django.forms import widgets
 
 
-class ToDoForm(forms.ModelForm):
-    def clean_description(self):
-        description = self.cleaned_data['description']
-        if len(description) <= 3:
+class IssueForm(forms.ModelForm):
+    def clean_summary(self):
+        summary = self.cleaned_data['summary']
+        if len(summary) <= 3:
             raise ValidationError("Слишком короткое описание, попробуйте подлиннее")
         else:
-            return description
+            return summary
 
     class Meta:
-        model = ToDo
-        fields = ['description', 'description_detail', 'status', 'date_completion']
+        model = Issue
+        fields = ['description', 'summary', 'statuses', 'types']
         error_messages = {
-            "description": {
-                "required": "Поле обязательное"
-            }
+            "summary": {
+                "required": "Поле обязательное"},
+
         }
         widgets = {
-            'description_detail': widgets.Textarea(attrs={'cols': 20, "rows": 5}),
-            'date_completion': widgets.DateInput(attrs={"type": "date"}),
+            'description': widgets.Textarea(attrs={'cols': 20, "rows": 5}),
         }

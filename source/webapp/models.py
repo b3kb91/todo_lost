@@ -1,19 +1,45 @@
 from django.db import models
 
-status_choices = [('new', 'Новая'), ('in_progress', 'В процессе'), ('done', 'Сделано')]
+
+class BaseModel(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания")
+    updated_at = models.DateTimeField(auto_now=True, verbose_name="Дата изменения")
 
 
-class ToDo(models.Model):
-    description = models.CharField(max_length=50, null=False, blank=False, verbose_name="Описание")
-    description_detail = models.TextField(max_length=500, null=True, blank=True, verbose_name="Подробное описание")
-    status = models.CharField(max_length=50, null=False, blank=False, verbose_name="Статус", default="new",
-                              choices=status_choices)
-    date_completion = models.DateField(null=True, blank=True, verbose_name="Дата выполнения")
+class Type(models.Model):
+    title = models.CharField(max_length=50, null=False, blank=False, verbose_name="Название типа:", unique=True)
 
     def __str__(self):
-        return f"{self.description} {self.date_completion} {self.status} {self.description_detail}"
+        return self.title
 
     class Meta:
-        db_table = 'todo_lists'
-        verbose_name = "Cписок задач"
-        verbose_name_plural = "Списки задач"
+        db_table = "Types"
+        verbose_name = "Тип"
+        verbose_name_plural = "Типы"
+
+
+class Status(models.Model):
+    title = models.CharField(max_length=50, null=False, blank=False, verbose_name="Название статуса:", unique=True)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        db_table = "Statuses"
+        verbose_name = "Статус"
+        verbose_name_plural = "Статусы"
+
+
+class Issue(BaseModel):
+    summary = models.CharField(max_length=50, null=False, blank=False, verbose_name="Краткое Описание")
+    description = models.TextField(max_length=500, null=True, blank=True, verbose_name="Подробное описание")
+    statuses = models.ForeignKey('webapp.Status', related_name='issues', on_delete=models.PROTECT)
+    types = models.ForeignKey('webapp.Type', related_name='issues', on_delete=models.PROTECT)
+
+    def __str__(self):
+        return f"{self.summary} {self.description} {self.statuses} {self.types}"
+
+    class Meta:
+        db_table = 'Issues'
+        verbose_name = "Трекер задач"
+        verbose_name_plural = "Трекеры задач"
