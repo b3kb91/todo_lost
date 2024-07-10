@@ -1,42 +1,44 @@
 [
 {
-  "model": "webapp.todo",
-  "pk": 17,
-  "fields": {
-    "description": "поиграт",
-    "description_detail": "сходить на улицу и погулять с друзьями",
-    "status": "done",
-    "date_completion": "2024-06-22"
-  }
+    "model": "webapp.type",
+    "pk": 1,
+    "fields": {
+        "title": "задача"
+    }
 },
 {
-  "model": "webapp.todo",
-  "pk": 27,
-  "fields": {
-    "description": "hello",
-    "description_detail": "how are u",
-    "status": "in_progress",
-    "date_completion": "2024-07-03"
-  }
+    "model": "webapp.type",
+    "pk": 2,
+    "fields": {
+        "title": "ошибка"
+    }
 },
 {
-  "model": "webapp.todo",
-  "pk": 28,
-  "fields": {
-    "description": "hello",
-    "description_detail": "heeeee",
-    "status": "new",
-    "date_completion": "2024-07-04"
-  }
+    "model": "webapp.type",
+    "pk": 3,
+    "fields": {
+        "title": "улучшение"
+    }
 },
 {
-  "model": "webapp.todo",
-  "pk": 29,
-  "fields": {
-    "description": "привет",
-    "description_detail": "пока ахахахахха",
-    "status": "new",
-    "date_completion": "2024-07-09"
-  }
+    "model": "webapp.status",
+    "pk": 1,
+    "fields": {
+        "title": "новый"
+    }
+},
+{
+    "model": "webapp.status",
+    "pk": 2,
+    "fields": {
+        "title": "процессе"
+    }
+},
+{
+    "model": "webapp.status",
+    "pk": 3,
+    "fields": {
+        "title": "выполнено"
+    }
 }
 ]

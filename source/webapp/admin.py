@@ -1,33 +1,17 @@
 from django.contrib import admin
 
-from webapp.models import Issue
-
-
-class TypeAdmin(admin.ModelAdmin):
-    list_display = ['title']
-    list_filter = ['title']
-    list_display_links = ["title"]
-    search_fields = ['title']
-    fields = ['title']
-    readonly_fields = ['title']
-
-
-class StatusAdmin(admin.ModelAdmin):
-    list_display = ['title']
-    list_filter = ['title']
-    list_display_links = ["title"]
-    search_fields = ['title']
-    fields = ['title']
-    readonly_fields = ['title']
+from webapp.models import Issue, Status, Type
 
 
 class IssueAdmin(admin.ModelAdmin):
-    list_display = ['id', 'description', 'statuses', 'summary']
-    list_filter = ['statuses', 'id', 'types']
-    list_display_links = ["description"]
-    search_fields = ['description', 'statuses']
-    fields = ['description', 'statuses']
-    readonly_fields = ['types']
+    list_display = ['id', 'description', 'statuses', 'summary', 'types', 'created_at', 'updated_at']
+    list_filter = ['statuses', 'id', 'types', 'statuses']
+    list_display_links = ["description", 'statuses', 'types']
+    search_fields = ['description', 'statuses', 'types']
+    fields = ['description', 'statuses', 'types']
+    readonly_fields = ['created_at', 'updated_at']
 
 
-admin.site.register(Issue, IssueAdmin, TypeAdmin, StatusAdmin)
+admin.site.register(Issue, IssueAdmin)
+admin.site.register(Status)
+admin.site.register(Type)
