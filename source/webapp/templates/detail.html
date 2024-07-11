@@ -4,14 +4,19 @@
 {% block content %}
     <div class="card mt-3" style="width: 18rem;">
         <div class="card-body">
-            <h6 class="card-subtitle mb-2 text-body-secondary"><strong>Статус:</strong> в {{ issue.statuses}}</h6>
-            <h6 class="card-subtitle mb-2 text-body-secondary"><strong>Тип:</strong> {{ issue.types}}</h6>
+            <h6 class="card-subtitle mb-2 text-body-secondary"><strong>Статус:</strong> в {{ issue.statuses }}</h6>
+            <h6 class="card-subtitle mb-2 text-body-secondary"><strong>Тип:</strong> {% for type in issue.types.all %}
+                {{ type.title }}{% if not forloop.last %}, {% endif %}
+                {% empty %}
+                    <span>нет ни одного типа</span>
+                {% endfor %}
+            </h6>
             <p class="card-text"><strong>Краткое описание:</strong><br>{{ issue.summary }}</p>
             <p class="card-text"><strong>Полное описание:</strong><br>{{ issue.description }}</p>
             <p class="card-text"><strong>Дата создания:</strong><br>{{ issue.created_at|date:'Y-m-d' }}</p>
             <p class="card-text"><strong>Дата обновления:</strong><br>{{ issue.updated_at|date:'Y-m-d' }}</p>
             <a href="{% url 'main' %}" class="fa-2x fa-solid fa-house"></a>
-            <a href="{% url 'delete' issue.pk  %}" class="fa-2x fa-solid fa-trash text-danger"></a>
-        </div>         
+            <a href="{% url 'delete' issue.pk %}" class="fa-2x fa-solid fa-trash text-danger"></a>
+        </div>
     </div>
 {% endblock %}

@@ -6,7 +6,8 @@ from django.forms import widgets
 
 class IssueForm(forms.ModelForm):
     statuses = forms.ModelChoiceField(queryset=Status.objects.all())
-    types = forms.ModelChoiceField(queryset=Type.objects.all())
+    types = forms.ModelMultipleChoiceField(queryset=Type.objects.all(),
+                                   widget=forms.CheckboxSelectMultiple())
 
     def clean_summary(self):
         summary = self.cleaned_data['summary']
@@ -25,4 +26,5 @@ class IssueForm(forms.ModelForm):
         }
         widgets = {
             'description': widgets.Textarea(attrs={'cols': 20, "rows": 5}),
+
         }
