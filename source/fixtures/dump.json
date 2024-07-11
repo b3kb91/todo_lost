@@ -1,5 +1,29 @@
 [
 {
+    "model": "webapp.basemodel",
+    "pk": 1,
+    "fields": {
+        "created_at": "2024-07-10T18:47:22.783Z",
+        "updated_at": "2024-07-11T04:46:28.488Z"
+    }
+},
+{
+    "model": "webapp.basemodel",
+    "pk": 2,
+    "fields": {
+        "created_at": "2024-07-10T19:32:19.394Z",
+        "updated_at": "2024-07-11T04:45:56.374Z"
+    }
+},
+{
+    "model": "webapp.basemodel",
+    "pk": 4,
+    "fields": {
+        "created_at": "2024-07-11T04:06:10.170Z",
+        "updated_at": "2024-07-11T04:06:10.170Z"
+    }
+},
+{
     "model": "webapp.type",
     "pk": 1,
     "fields": {
@@ -39,6 +63,36 @@
     "pk": 3,
     "fields": {
         "title": "выполнено"
+    }
+},
+{
+    "model": "webapp.issue",
+    "pk": 1,
+    "fields": {
+        "summary": "Не знаю что написать",
+        "description": "Привет",
+        "statuses": 1,
+        "types": 1
+    }
+},
+{
+    "model": "webapp.issue",
+    "pk": 2,
+    "fields": {
+        "summary": "хеллоу",
+        "description": "Пустой",
+        "statuses": 3,
+        "types": 3
+    }
+},
+{
+    "model": "webapp.issue",
+    "pk": 4,
+    "fields": {
+        "summary": "Хеллоу",
+        "description": "Пустой",
+        "statuses": 2,
+        "types": 3
     }
 }
 ]
