@@ -1,11 +1,11 @@
 from django.urls import path
 
-from webapp.views import index, create_issue, detail_issue, delete_issue, update_issue
+from webapp.views import IssueListView, CreateIssueView, IssueDetailView, DeleteIssueView, UpdateIssueView
 
 urlpatterns = [
-    path('', index, name='main'),
-    path('create/', create_issue, name='create'),
-    path('issue/<int:pk>/', detail_issue, name="detail"),
-    path('issue/<int:pk>/update/', update_issue, name='update'),
-    path('issue/<int:pk>/', delete_issue, name="delete"),
+    path('', IssueListView.as_view(), name='main'),
+    path('create/', CreateIssueView.as_view(), name='create'),
+    path('issue/<int:pk>/', IssueDetailView.as_view(), name="detail"),
+    path('issue/<int:pk>/update/', UpdateIssueView.as_view(), name='update'),
+    path('delete/<int:pk>/', DeleteIssueView.as_view(), name="delete"),
 ]

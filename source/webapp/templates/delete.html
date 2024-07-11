@@ -2,9 +2,11 @@
 {% block content %}
     <form action="" method="post">
         {% csrf_token %}
-        Вы действительно хотите удалить статью {{ issue.title }}?
+        <h3>Вы действительно хотите удалить задачу: <strong>{{ issue.summary }}</strong> ?</h3>
         <br>
-        <button type="submit">Да</button>
+        <button type="submit" class="btn btn-danger">Удалить</button>
+        <br>
+        <br>
+        <a class="btn btn-primary" href={% url 'main' %}>Отмена</a>
     </form>
-    <a href="{% url "main" %}">Нет</a>
 {% endblock %}
