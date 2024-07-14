@@ -14,4 +14,17 @@
 )
 
 
+ДОПОЛНИТЕЛЬНЫЕ ЗАПРОСЫ:
 
+1.(
+    Issue.objects.values('id', 'summary', 'statuses__title', 'types__title')
+)
+
+2.(
+    Issue.objects.filter(summary=F('description')).count()
+)
+
+3.(
+    type_counts = Type.objects.annotate(issue_count=Count('issues')).values('title', 'issue_count')
+    print(type_counts)
+)
