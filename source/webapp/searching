@@ -10,7 +10,7 @@
 )
 
 3. (
-    Issue.objects.exclude(statuses__title='выполнено').filter(Q(summary__icontains='bug') | Q(types__title='задача')).count()
+    Issue.objects.exclude(statuses__title='выполнено').filter(Q(summary__icontains='ошибка') | Q(types__title='задача')).count()
 )
 
 
