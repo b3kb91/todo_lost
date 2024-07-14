@@ -5,9 +5,9 @@ from django.forms import widgets
 
 
 class IssueForm(forms.ModelForm):
-    statuses = forms.ModelChoiceField(queryset=Status.objects.all())
+    statuses = forms.ModelChoiceField(queryset=Status.objects.all()),
     types = forms.ModelMultipleChoiceField(queryset=Type.objects.all(),
-                                   widget=forms.CheckboxSelectMultiple())
+                                           widget=forms.CheckboxSelectMultiple(), required=False)
 
     def clean_summary(self):
         summary = self.cleaned_data['summary']
@@ -15,6 +15,13 @@ class IssueForm(forms.ModelForm):
             raise ValidationError("Слишком короткое описание, попробуйте подлиннее")
         else:
             return summary
+
+    def clean_description(self):
+        description = self.cleaned_data['description']
+        if not len(description) <= 100:
+            raise ValidationError("Это поле очень длинное, нужно меньше символов")
+        else:
+            return description
 
     class Meta:
         model = Issue

@@ -4,7 +4,7 @@
 {% block content %}
     <div class="card mt-3" style="width: 18rem;">
         <div class="card-body">
-            <h6 class="card-subtitle mb-2 text-body-secondary"><strong>Статус:</strong> в {{ issue.statuses }}</h6>
+            <h6 class="card-subtitle mb-2 text-body-secondary"><strong>Статус:</strong> {{ issue.statuses }}</h6>
             <h6 class="card-subtitle mb-2 text-body-secondary"><strong>Тип:</strong> {% for type in issue.types.all %}
                 {{ type.title }}{% if not forloop.last %}, {% endif %}
                 {% empty %}

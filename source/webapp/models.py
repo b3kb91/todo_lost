@@ -7,7 +7,7 @@ class BaseModel(models.Model):
 
 
 class Type(models.Model):
-    title = models.CharField(max_length=50, null=False, blank=False, verbose_name="Название типа:", unique=True)
+    title = models.CharField(max_length=50, verbose_name="Название типа:", unique=True)
 
     def __str__(self):
         return self.title
@@ -19,7 +19,7 @@ class Type(models.Model):
 
 
 class Status(models.Model):
-    title = models.CharField(max_length=50, null=False, blank=False, verbose_name="Название статуса:", unique=True)
+    title = models.CharField(max_length=50, verbose_name="Название статуса:", unique=True)
 
     def __str__(self):
         return self.title
