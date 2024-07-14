@@ -39,7 +39,7 @@ class Issue(BaseModel):
     types = models.ManyToManyField('webapp.Type', related_name='issues', verbose_name='Типы', blank=True)
 
     def __str__(self):
-        return f"{self.summary} {self.description} {self.statuses} {self.types}"
+        return f"{self.summary} {self.description} {self.statuses}"
 
     class Meta:
         db_table = 'Issues'

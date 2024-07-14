@@ -1,0 +1,17 @@
+1. (
+    Issue.objects.filter(statuses__title='выполнено', updated_at__gte=(timezone.now() - timedelta(days=30)))
+    )
+
+
+2.(
+    status = ['новый', 'процессе']
+    tipe = ['задача', 'ошибка']
+    Issue.objects.filter(Q(statuses__title__in=status) & Q(types__title__in=tipe))
+)
+
+3. (
+    Issue.objects.exclude(statuses__title='выполнено').filter(Q(summary__icontains='bug') | Q(types__title='задача')).count()
+)
+
+
+
