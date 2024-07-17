@@ -30,6 +30,22 @@ class Status(models.Model):
         verbose_name_plural = "Статусы"
 
 
+class Project(models.Model):
+    start_date = models.DateField(null=False, blank=False, verbose_name='Дата начала')
+    end_date = models.DateField(null=True, blank=True, verbose_name='Дата окончания')
+    title = models.CharField(null=False, blank=False, verbose_name='Название', max_length=65)
+    description = models.TextField(max_length=500, null=True, blank=True, verbose_name="Описание",
+                                   default='Пустое описание')
+
+    def __str__(self):
+        return f'{self.title} {self.description}'
+
+    class Meta:
+        db_table = 'Projects'
+        verbose_name = "Проект"
+        verbose_name_plural = "Проекты"
+
+
 class Issue(BaseModel):
     summary = models.CharField(max_length=50, null=False, blank=False, verbose_name="Краткое Описание")
     description = models.TextField(max_length=500, null=True, blank=True, verbose_name="Подробное описание",
@@ -37,6 +53,8 @@ class Issue(BaseModel):
     statuses = models.ForeignKey('webapp.Status', related_name='issues', verbose_name='Статусы',
                                  on_delete=models.PROTECT)
     types = models.ManyToManyField('webapp.Type', related_name='issues', verbose_name='Типы', blank=True)
+    project = models.ForeignKey('webapp.Project', null=False, blank=False, related_name='issues',
+                                on_delete=models.PROTECT, verbose_name='Проект')
 
     def __str__(self):
         return f"{self.summary} {self.description} {self.statuses}"
@@ -45,12 +63,3 @@ class Issue(BaseModel):
         db_table = 'Issues'
         verbose_name = "Трекер задач"
         verbose_name_plural = "Трекеры задач"
-
-
-class Project(models.Model):
-    issue = models.ForeignKey('webapp.Issue', related_name='projects', on_delete=models.PROTECT, verbose_name='Проект')
-    start_date = models.DateField(null=False, blank=False, verbose_name='Дата начала')
-    end_date = models.DateField(null=True, blank=True, verbose_name='Дата окончания')
-    title = models.CharField(null=False, blank=False, verbose_name='Название', max_length=65)
-    description = models.TextField(max_length=500, null=True, blank=True, verbose_name="Описание",
-                                   default='Пустое описание')
