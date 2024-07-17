@@ -1,21 +1,42 @@
+from django.db.models import Q
+from django.utils.http import urlencode
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views import View
 
-from django.views.generic import TemplateView
+from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 
 from webapp.models import Issue
-from webapp.forms import IssueForm
+from webapp.forms import IssueForm, SearchForm
 
 
-class IssueListView(TemplateView):
-    # template_name = 'index.html'
+class IssueListView(ListView):
+    model = Issue
+    template_name = 'issues/index.html'
+    context_object_name = 'issues'
+    ordering = ['-updated_at']
+    paginate_by = 5
 
-    def get(self, request, *args, **kwargs):
-        issue = Issue.objects.order_by('-updated_at')
-        return render(request, 'index.html', context={"issue": issue})
+    def dispatch(self, request, *args, **kwargs):
+        self.form = self.get_form()
+        self.search_value = self.get_search_value()
+        return super().dispatch(*args, **kwargs)
+
+    def get_form(self):
+        return SearchForm(self.request.GET)
+
+    def get_search_value(self):
+        form = self.form
+        if form.is_valid():
+            return form.cleaned_data['search']
+
+    def get_queryset(self):
+        queryset - super().get_queryset()
+        if self.search_value:
+            queryset = queryset.filter()
+        return queryset
 
 
-class IssueDetailView(TemplateView):
+class IssueDetailView(DetailView):
     def dispatch(self, request, *args, **kwargs):
         self.issue = get_object_or_404(Issue, pk=kwargs.get('pk'))
         return super().dispatch(request, *args, **kwargs)
@@ -35,7 +56,7 @@ class CreateIssueView(View):
 
     def get(self, request, *args, **kwargs):
         form = IssueForm()
-        return render(request, 'create.html', context={"form": form})
+        return render(request, 'issues/create.html', context={"form": form})
 
     def post(self, request, *args, **kwargs):
         form = IssueForm(data=request.POST)
@@ -46,7 +67,7 @@ class CreateIssueView(View):
 
         return render(
             request,
-            "create.html",
+            "issues/create.html",
             {"form": form})
 
 
@@ -57,7 +78,7 @@ class DeleteIssueView(View):
         return super().dispatch(request, *args, **kwargs)
 
     def get(self, request, *args, **kwargs):
-        return render(request, "delete.html", context={"issue": self.issue})
+        return render(request, "issues/delete.html", context={"issue": self.issue})
 
     def post(self, request, *args, **kwargs):
         self.issue.delete()
@@ -72,7 +93,7 @@ class UpdateIssueView(View):
     def get(self, request, *args, **kwargs):
         form = IssueForm(instance=self.issue)
         return render(
-            request, "update.html",
+            request, "issues/update.html",
             context={"form": form})
 
     def post(self, request, *args, **kwargs):
@@ -83,5 +104,5 @@ class UpdateIssueView(View):
         else:
             return render(
                 request,
-                "update.html",
+                "issues/update.html",
                 {"form": form})

@@ -1,6 +1,6 @@
 from django.urls import path
 
-from webapp.views import IssueListView, CreateIssueView, IssueDetailView, DeleteIssueView, UpdateIssueView
+from webapp.views.issues import IssueListView, CreateIssueView, IssueDetailView, DeleteIssueView, UpdateIssueView
 
 urlpatterns = [
     path('', IssueListView.as_view(), name='main'),

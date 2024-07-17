@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "issues/../base.html" %}
 
 {% block title %}
     <title>TODO_LIST</title>
@@ -7,6 +7,11 @@
 <a href="create/">Создать задачу</a><br><br>
 <br>
 {% block content %}
+    <br>
+    <form method="get">
+        {% include "partial/search_form.html" with form=search_form %}
+    </form>
+    <br>
     <div class="row">
         {% for issues in issue %}
             <div class="class=col-12 col-md-6 col-lg-3 mt-3">

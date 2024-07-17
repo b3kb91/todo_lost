@@ -45,3 +45,12 @@ class Issue(BaseModel):
         db_table = 'Issues'
         verbose_name = "Трекер задач"
         verbose_name_plural = "Трекеры задач"
+
+
+class Project(models.Model):
+    issue = models.ForeignKey('webapp.Issue', related_name='projects', on_delete=models.PROTECT, verbose_name='Проект')
+    start_date = models.DateField(null=False, blank=False, verbose_name='Дата начала')
+    end_date = models.DateField(null=True, blank=True, verbose_name='Дата окончания')
+    title = models.CharField(null=False, blank=False, verbose_name='Название', max_length=65)
+    description = models.TextField(max_length=500, null=True, blank=True, verbose_name="Описание",
+                                   default='Пустое описание')
