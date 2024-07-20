@@ -37,6 +37,7 @@ class ProjectListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context["search_form"] = self.form
         if self.search_value:
             context["search"] = urlencode({"search": self.search_value})
             context["search_value"] = self.search_value

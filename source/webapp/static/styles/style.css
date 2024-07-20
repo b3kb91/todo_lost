@@ -42,3 +42,11 @@
     text-align: center;
     border: solid 1px gray;
 }
+
+.paginator{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 20vh;
+}
