@@ -9,14 +9,6 @@
 },
 {
     "model": "webapp.basemodel",
-    "pk": 10,
-    "fields": {
-        "created_at": "2024-07-14T10:49:20.317Z",
-        "updated_at": "2024-07-14T10:49:20.317Z"
-    }
-},
-{
-    "model": "webapp.basemodel",
     "pk": 11,
     "fields": {
         "created_at": "2024-07-14T10:49:49.890Z",
@@ -132,7 +124,229 @@
     "pk": 25,
     "fields": {
         "created_at": "2024-07-14T11:06:10.378Z",
-        "updated_at": "2024-07-14T11:06:10.378Z"
+        "updated_at": "2024-07-20T16:59:44.439Z"
+    }
+},
+{
+    "model": "webapp.basemodel",
+    "pk": 39,
+    "fields": {
+        "created_at": "2024-07-20T16:33:14.381Z",
+        "updated_at": "2024-07-20T16:58:38.528Z"
+    }
+},
+{
+    "model": "webapp.issue",
+    "pk": 11,
+    "fields": {
+        "summary": "cook",
+        "description": "Cooking dinner",
+        "statuses": 1,
+        "project": 1,
+        "is_deleted": false,
+        "types": [
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "webapp.issue",
+    "pk": 12,
+    "fields": {
+        "summary": "play",
+        "description": "I like to play football and basketball outside with the boys.",
+        "statuses": 3,
+        "project": 1,
+        "is_deleted": false,
+        "types": [
+            1,
+            2
+        ]
+    }
+},
+{
+    "model": "webapp.issue",
+    "pk": 13,
+    "fields": {
+        "summary": "about Trump",
+        "description": "Trump is the president of the United States",
+        "statuses": 1,
+        "project": 1,
+        "is_deleted": false,
+        "types": [
+            2
+        ]
+    }
+},
+{
+    "model": "webapp.issue",
+    "pk": 14,
+    "fields": {
+        "summary": "about Putin",
+        "description": "Putin is the President of Russia",
+        "statuses": 3,
+        "project": 13,
+        "is_deleted": false,
+        "types": [
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "webapp.issue",
+    "pk": 15,
+    "fields": {
+        "summary": "Kyrgyzstan",
+        "description": "Kyrgyzstan is a mountainous country",
+        "statuses": 1,
+        "project": 1,
+        "is_deleted": false,
+        "types": [
+            1,
+            3
+        ]
+    }
+},
+{
+    "model": "webapp.issue",
+    "pk": 16,
+    "fields": {
+        "summary": "Issyk-Kul",
+        "description": "I don't really like going to Issyk Kul in the summer",
+        "statuses": 3,
+        "project": 1,
+        "is_deleted": false,
+        "types": [
+            2
+        ]
+    }
+},
+{
+    "model": "webapp.issue",
+    "pk": 17,
+    "fields": {
+        "summary": "pearl",
+        "description": "The pearl of Kyrgyzstan is Lake Issyk Kul",
+        "statuses": 1,
+        "project": 1,
+        "is_deleted": false,
+        "types": [
+            1,
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "webapp.issue",
+    "pk": 18,
+    "fields": {
+        "summary": "Aral Sea",
+        "description": "The Aral Sea is already disappearing from the face of the earth",
+        "statuses": 3,
+        "project": 1,
+        "is_deleted": false,
+        "types": []
+    }
+},
+{
+    "model": "webapp.issue",
+    "pk": 19,
+    "fields": {
+        "summary": "pass",
+        "description": "I don't know what to write, and abouy of that this field is empty",
+        "statuses": 2,
+        "project": 1,
+        "is_deleted": false,
+        "types": [
+            3
+        ]
+    }
+},
+{
+    "model": "webapp.issue",
+    "pk": 20,
+    "fields": {
+        "summary": "to examiner",
+        "description": "The examiner you're cool, remember this",
+        "statuses": 1,
+        "project": 1,
+        "is_deleted": false,
+        "types": [
+            1
+        ]
+    }
+},
+{
+    "model": "webapp.issue",
+    "pk": 21,
+    "fields": {
+        "summary": "I'm tired of filling",
+        "description": "I'm tired of filling out these tables",
+        "statuses": 2,
+        "project": 1,
+        "is_deleted": false,
+        "types": [
+            3
+        ]
+    }
+},
+{
+    "model": "webapp.issue",
+    "pk": 22,
+    "fields": {
+        "summary": "about country",
+        "description": "Russia is the largest country, and the Vatican is the smallest",
+        "statuses": 1,
+        "project": 1,
+        "is_deleted": false,
+        "types": [
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "webapp.issue",
+    "pk": 23,
+    "fields": {
+        "summary": "emptyyyyyyyy",
+        "description": "Empty",
+        "statuses": 2,
+        "project": 13,
+        "is_deleted": false,
+        "types": [
+            3
+        ]
+    }
+},
+{
+    "model": "webapp.issue",
+    "pk": 24,
+    "fields": {
+        "summary": "cars",
+        "description": "bmw, mercedez - best car",
+        "statuses": 2,
+        "project": 1,
+        "is_deleted": false,
+        "types": [
+            1,
+            2
+        ]
+    }
+},
+{
+    "model": "webapp.issue",
+    "pk": 39,
+    "fields": {
+        "summary": "beka000",
+        "description": "Пустой",
+        "statuses": 2,
+        "project": 16,
+        "is_deleted": false,
+        "types": []
     }
 },
 {
@@ -184,234 +398,77 @@
         "start_date": "2024-07-17",
         "end_date": null,
         "title": "Проект1",
+        "description": "aaaaa"
+    }
+},
+{
+    "model": "webapp.project",
+    "pk": 13,
+    "fields": {
+        "start_date": "2024-07-13",
+        "end_date": "2024-08-10",
+        "title": "beka",
         "description": "Пустое описание"
     }
 },
 {
-    "model": "webapp.issue",
-    "pk": 9,
-    "fields": {
-        "summary": "walk",
-        "description": "we're walking on the street",
-        "statuses": 2,
-        "project": 1,
-        "types": []
-    }
-},
-{
-    "model": "webapp.issue",
-    "pk": 10,
-    "fields": {
-        "summary": "woods walk",
-        "description": "Walking in the woods",
-        "statuses": 2,
-        "project": 1,
-        "types": [
-            1,
-            2,
-            3
-        ]
-    }
-},
-{
-    "model": "webapp.issue",
-    "pk": 11,
-    "fields": {
-        "summary": "cook",
-        "description": "Cooking dinner",
-        "statuses": 1,
-        "project": 1,
-        "types": [
-            2,
-            3
-        ]
-    }
-},
-{
-    "model": "webapp.issue",
-    "pk": 12,
-    "fields": {
-        "summary": "play",
-        "description": "I like to play football and basketball outside with the boys.",
-        "statuses": 3,
-        "project": 1,
-        "types": [
-            1,
-            2
-        ]
-    }
-},
-{
-    "model": "webapp.issue",
-    "pk": 13,
-    "fields": {
-        "summary": "about Trump",
-        "description": "Trump is the president of the United States",
-        "statuses": 1,
-        "project": 1,
-        "types": [
-            2
-        ]
-    }
-},
-{
-    "model": "webapp.issue",
+    "model": "webapp.project",
     "pk": 14,
     "fields": {
-        "summary": "about Putin",
-        "description": "Putin is the President of Russia",
-        "statuses": 3,
-        "project": 1,
-        "types": [
-            2,
-            3
-        ]
+        "start_date": "2024-07-22",
+        "end_date": null,
+        "title": "22222",
+        "description": "Пустое описание"
     }
 },
 {
-    "model": "webapp.issue",
+    "model": "webapp.project",
     "pk": 15,
     "fields": {
-        "summary": "Kyrgyzstan",
-        "description": "Kyrgyzstan is a mountainous country",
-        "statuses": 1,
-        "project": 1,
-        "types": [
-            1,
-            3
-        ]
+        "start_date": "2024-07-23",
+        "end_date": null,
+        "title": "33333",
+        "description": "Пустое описание"
     }
 },
 {
-    "model": "webapp.issue",
+    "model": "webapp.project",
     "pk": 16,
     "fields": {
-        "summary": "Issyk-Kul",
-        "description": "I don't really like going to Issyk Kul in the summer",
-        "statuses": 3,
-        "project": 1,
-        "types": [
-            2
-        ]
+        "start_date": "2024-07-24",
+        "end_date": null,
+        "title": "44444",
+        "description": "Пустое описание"
     }
 },
 {
-    "model": "webapp.issue",
-    "pk": 17,
-    "fields": {
-        "summary": "pearl",
-        "description": "The pearl of Kyrgyzstan is Lake Issyk Kul",
-        "statuses": 1,
-        "project": 1,
-        "types": [
-            1,
-            2,
-            3
-        ]
-    }
-},
-{
-    "model": "webapp.issue",
+    "model": "webapp.project",
     "pk": 18,
     "fields": {
-        "summary": "Aral Sea",
-        "description": "The Aral Sea is already disappearing from the face of the earth",
-        "statuses": 3,
-        "project": 1,
-        "types": []
+        "start_date": "2024-07-10",
+        "end_date": null,
+        "title": "111111111",
+        "description": "Пустое описание"
     }
 },
 {
-    "model": "webapp.issue",
-    "pk": 19,
-    "fields": {
-        "summary": "pass",
-        "description": "I don't know what to write, and abouy of that this field is empty",
-        "statuses": 2,
-        "project": 1,
-        "types": [
-            3
-        ]
-    }
-},
-{
-    "model": "webapp.issue",
-    "pk": 20,
-    "fields": {
-        "summary": "to examiner",
-        "description": "The examiner you're cool, remember this",
-        "statuses": 1,
-        "project": 1,
-        "types": [
-            1
-        ]
-    }
-},
-{
-    "model": "webapp.issue",
-    "pk": 21,
-    "fields": {
-        "summary": "I'm tired of filling",
-        "description": "I'm tired of filling out these tables",
-        "statuses": 2,
-        "project": 1,
-        "types": [
-            3
-        ]
-    }
-},
-{
-    "model": "webapp.issue",
-    "pk": 22,
-    "fields": {
-        "summary": "about country",
-        "description": "Russia is the largest country, and the Vatican is the smallest",
-        "statuses": 1,
-        "project": 1,
-        "types": [
-            2,
-            3
-        ]
-    }
-},
-{
-    "model": "webapp.issue",
+    "model": "webapp.project",
     "pk": 23,
     "fields": {
-        "summary": "emptyyyyyyyy",
-        "description": "Empty",
-        "statuses": 2,
-        "project": 1,
-        "types": [
-            3
-        ]
+        "start_date": "2024-07-09",
+        "end_date": null,
+        "title": "55555555",
+        "description": "Пустое описание"
     }
 },
 {
-    "model": "webapp.issue",
-    "pk": 24,
-    "fields": {
-        "summary": "cars",
-        "description": "bmw, mercedez - best car",
-        "statuses": 2,
-        "project": 1,
-        "types": [
-            1,
-            2
-        ]
-    }
-},
-{
-    "model": "webapp.issue",
+    "model": "webapp.project",
     "pk": 25,
     "fields": {
-        "summary": "Chinese cars",
-        "description": "Chinese cars are crap",
-        "statuses": 3,
-        "project": 1,
-        "types": [
-            2
-        ]
+        "start_date": "2024-07-24",
+        "end_date": "2024-07-03",
+        "title": "beka2.0",
+        "description": "Пустое описание"
     }
 }
 ]
