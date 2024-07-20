@@ -1,4 +1,7 @@
 from django.db import models
+from django.urls import reverse
+
+from webapp.models import BaseModel
 
 
 class Issue(BaseModel):
@@ -10,6 +13,9 @@ class Issue(BaseModel):
     types = models.ManyToManyField('webapp.Type', related_name='issues', verbose_name='Типы', blank=True)
     project = models.ForeignKey('webapp.Project', null=False, blank=False, related_name='issues',
                                 on_delete=models.PROTECT, verbose_name='Проект')
+
+    def get_absolute_url(self):
+        return reverse("detail", kwargs={'pk': self.pk})
 
     def __str__(self):
         return f"{self.summary} {self.description} {self.statuses}"

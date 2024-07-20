@@ -1,10 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "projects/../base.html" %}
 
-</body>
-</html>
+
+{% block links %}
+{% endblock %}
+
+
+{% block content %}
+<h1>Создание нового проекта</h1>
+<form action="" method="post">
+    {% include 'partial/form.html' with button_text='Создать' %}
+</form>
+{% endblock %}

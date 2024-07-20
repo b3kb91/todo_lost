@@ -22,7 +22,7 @@ class ProjectForm(forms.ModelForm):
 
     class Meta:
         model = Project
-        fields = ['title', 'description', 'end_date', 'start_date']
+        fields = ['title', 'description', 'start_date', 'end_date']
         error_messages = {
             "title": {
                 "required": "Поле обязательное"},
@@ -32,5 +32,7 @@ class ProjectForm(forms.ModelForm):
         }
         widgets = {
             'description': widgets.Textarea(attrs={'cols': 20, "rows": 5}),
+            'start_date': widgets.DateInput(attrs={'type': 'date'}),
+            'end_date': widgets.DateInput(attrs={'type': 'date'})
 
         }

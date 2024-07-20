@@ -1,10 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "projects/../base.html" %}
 
-</body>
-</html>
+
+{% block content %}
+    <div class="card mt-3 text-center" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-subtitle mb-2 text-body-secondary">
+                <strong>Название:</strong> {{ project.title }}
+            </h5>
+            <h6 class="card-text">
+                <strong>Описание</strong><br>{{ project.description }}
+            </h6>
+            <p class="card-text"><strong>Дата начала:</strong><br>{{ project.start_date }}</p>
+            <p class="card-text"><strong>Дата окончания:</strong><br>{{ project.end_date }}</p>
+        </div>
+    </div>
+    {% if issues.exists %}
+        {% for issue in issues %}
+            <div class="card mt-4 text" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Задачи проекта: </h5>
+                    <p class="card-text"><strong>Краткое описание:</strong><br>{{ issue.summary }}</p>
+                    <p class="card-text"><strong>Полное описание:</strong><br>{{ issue.description }}</p>
+                    <a href="{% url 'update' issue.pk %}">
+                        <i class="fa-2x fa-sharp fa-regular fa-pen-to-square"></i>
+                    </a>
+                    <a href="{% url 'detail' project.pk %}">
+                        <i class="fa-2x fa-solid fa-circle-info"></i>
+                    </a>
+                    <a href="{% url 'delete' issue.pk %}" class="fa-2x fa-solid fa-trash text-danger"></a>
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endblock %}
+
