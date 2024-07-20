@@ -21,11 +21,19 @@ class IssueDetailView(DetailView):
     template_name = 'issues/detail.html'
     model = Issue
 
+    def get_queryset(self):
+        return Issue.objects.filter(is_deleted=False)
+
 
 class IssueDeleteView(DeleteView):
     template_name = 'issues/delete.html'
     model = Issue
     success_url = reverse_lazy('main')
+
+    def delete(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        self.object.delete()
+        return self.get_success_url()
 
 
 class IssueUpdateView(UpdateView):
