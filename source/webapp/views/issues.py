@@ -29,11 +29,20 @@ class IssueListView(ListView):
         if form.is_valid():
             return form.cleaned_data['search']
 
-    def get_queryset(self):
-        queryset - super().get_queryset()
+    # def get_queryset(self):
+    #     queryset = super().get_queryset()
+    #     if self.search_value:
+    #         queryset = queryset.filter(
+    #             Q()
+    #         )
+    #     return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
         if self.search_value:
-            queryset = queryset.filter()
-        return queryset
+            context["search"] = urlencode({"search": self.search_value})
+            context["search_value"] = self.search_value
+        return context
 
 
 class IssueDetailView(DetailView):
@@ -50,7 +59,10 @@ class IssueDetailView(DetailView):
         return "detail.html"
 
 
-class CreateIssueView(View):
+class CreateIssueView(CreateView):
+    model = Issue
+    form_class = IssueForm
+    template_name = 'projects'
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
 
