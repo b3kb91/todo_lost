@@ -1,1 +1,1 @@
-from webapp.views.issues import IssueDetailView, IssueDeleteView, IssueUpdateView
+from webapp.views.issues import IssueDetailView, IssueDeleteView, IssueUpdateView, IssueCreateView

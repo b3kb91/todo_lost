@@ -1,29 +1,31 @@
+from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse_lazy
-from django.views.generic import DetailView, UpdateView, DeleteView
-from webapp.models import Issue
+from django.views.generic import DetailView, UpdateView, DeleteView, CreateView
+from webapp.models import Issue, Project
 from webapp.forms import IssueForm
+
+
+class IssueCreateView(CreateView):
+    template_name = 'issues/create.html'
+    form_class = IssueForm
+
+    def form_valid(self, form):
+        project = get_object_or_404(Project, pk=self.kwargs['pk'])
+        issue = form.save(commit=False)
+        issue.project = project
+        issue.save()
+        return redirect(project.get_absolute_url())
 
 
 class IssueDetailView(DetailView):
     template_name = 'issues/detail.html'
     model = Issue
 
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     context["comments"] = self.object.comments.order_by("-created_at")
-    #     return context
-
 
 class IssueDeleteView(DeleteView):
     template_name = 'issues/delete.html'
     model = Issue
     success_url = reverse_lazy('main')
-    # queryset = Issue.objects.all()
-    #
-    # def get(self, request, *args, **kwargs):
-    #     self.object = self.get_object()
-    #     self.object.delete()
-    #     return redirect("detail", pk=self.object.issue.pk)
 
 
 class IssueUpdateView(UpdateView):

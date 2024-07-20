@@ -1,6 +1,9 @@
 {% extends "projects/../base.html" %}
-
-
+{% block links %}
+    <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="{% url 'create' project.pk %}">Создать задачу</a>
+    </li>
+{% endblock %}
 {% block content %}
     <div class="card mt-3 text-center" style="width: 18rem;">
         <div class="card-body">
