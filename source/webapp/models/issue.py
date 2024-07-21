@@ -17,7 +17,7 @@ class Issue(BaseModel):
                                  on_delete=models.PROTECT)
     types = models.ManyToManyField('webapp.Type', related_name='issues', verbose_name='Типы', blank=True)
     project = models.ForeignKey('webapp.Project', null=False, blank=False, related_name='issues',
-                                on_delete=models.PROTECT, verbose_name='Проект')
+                                on_delete=models.CASCADE, verbose_name='Проект')
     is_deleted = models.BooleanField(default=False)
     objects = Manager()
 
