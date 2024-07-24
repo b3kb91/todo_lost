@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'webapp'
+    'webapp',
+    'accounts'
 ]
 
 MIDDLEWARE = [
@@ -115,6 +116,11 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
+
+LOGIN_URL = "accounts:login"
+
+LOGIN_REDIRECT_URL = "webapp:main"
+LOGOUT_REDIRECT_URL = "webapp:main"
 
 
 # Static files (CSS, JavaScript, Images)

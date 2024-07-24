@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.views.generic import DetailView, UpdateView, DeleteView, CreateView
@@ -5,7 +6,9 @@ from webapp.models import Issue, Project
 from webapp.forms import IssueForm
 
 
-class IssueCreateView(CreateView):
+# /issue/12/
+
+class IssueCreateView(LoginRequiredMixin, CreateView):
     template_name = 'issues/create.html'
     form_class = IssueForm
 
@@ -22,10 +25,10 @@ class IssueDetailView(DetailView):
     model = Issue
 
     def get_queryset(self):
-        return Issue.objects.filter(deleted=False)
+        return Issue.objects.filter(is_deleted=False)
 
 
-class IssueDeleteView(DeleteView):
+class IssueDeleteView(LoginRequiredMixin, DeleteView):
     template_name = 'issues/delete.html'
     model = Issue
     success_url = reverse_lazy('webapp:main')
@@ -36,7 +39,7 @@ class IssueDeleteView(DeleteView):
         return self.get_success_url()
 
 
-class IssueUpdateView(UpdateView):
+class IssueUpdateView(LoginRequiredMixin, UpdateView):
     template_name = 'issues/update.html'
     form_class = IssueForm
     model = Issue

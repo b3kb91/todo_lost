@@ -1,8 +1,12 @@
 {% extends "projects/../base.html" %}
 {% block links %}
-    <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="{% url 'webapp:create' project.pk %}">Создать задачу</a>
-    </li>
+    {% if request.user.is_authenticated %}
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'webapp:create' project.pk %}">Создать
+                задачу</a>
+        </li>
+    {% endif %}
+
 {% endblock %}
 {% block content %}
     <div class="card mt-3 text-center" style="width: 18rem;">
@@ -27,7 +31,7 @@
                     <a href="{% url 'webapp:update' issue.pk %}">
                         <i class="fa-2x fa-sharp fa-regular fa-pen-to-square"></i>
                     </a>
-                    <a href="{% url 'webapp:detail' project.pk %}">
+                    <a href="{% url 'webapp:detail' issue.pk %}">
                         <i class="fa-2x fa-solid fa-circle-info"></i>
                     </a>
                     <a href="{% url 'webapp:delete' issue.pk %}" class="fa-2x fa-solid fa-trash text-danger"></a>

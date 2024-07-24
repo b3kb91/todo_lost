@@ -11,6 +11,7 @@
     <form method="get">
         {% include "partial/search_form.html" with form=search_form %}
     </form>
+    <br><p>Оставил для удобства, чтобы было легче проверять - {{ request.user }}</p>
     <br>
     <div class="row">
         {% for project in projects %}
