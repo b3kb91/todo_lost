@@ -1,7 +1,7 @@
 {% extends "projects/../base.html" %}
 {% block links %}
     <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="{% url 'create' project.pk %}">Создать задачу</a>
+        <a class="nav-link active" aria-current="page" href="{% url 'webapp:create' project.pk %}">Создать задачу</a>
     </li>
 {% endblock %}
 {% block content %}
@@ -24,13 +24,13 @@
                     <h5 class="card-title">Задачи проекта: </h5>
                     <p class="card-text"><strong>Краткое описание:</strong><br>{{ issue.summary }}</p>
                     <p class="card-text"><strong>Полное описание:</strong><br>{{ issue.description }}</p>
-                    <a href="{% url 'update' issue.pk %}">
+                    <a href="{% url 'webapp:update' issue.pk %}">
                         <i class="fa-2x fa-sharp fa-regular fa-pen-to-square"></i>
                     </a>
-                    <a href="{% url 'detail' project.pk %}">
+                    <a href="{% url 'webapp:detail' project.pk %}">
                         <i class="fa-2x fa-solid fa-circle-info"></i>
                     </a>
-                    <a href="{% url 'delete' issue.pk %}" class="fa-2x fa-solid fa-trash text-danger"></a>
+                    <a href="{% url 'webapp:delete' issue.pk %}" class="fa-2x fa-solid fa-trash text-danger"></a>
                 </div>
             </div>
         {% endfor %}

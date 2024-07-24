@@ -4,7 +4,7 @@
     <title>TODO_LIST</title>
 {% endblock %}
 <br>
-<a href="create_project/">Создать проект</a><br><br>
+<a href="webapp:create_project/">Создать проект</a><br><br>
 <br>
 {% block content %}
     <br>
@@ -26,13 +26,13 @@
                         </h6>
                         <p class="card-text"><strong>Дата начала:</strong><br>{{ project.start_date }}</p>
                         <p class="card-text"><strong>Дата окончания:</strong><br>{{ project.end_date }}</p>
-                        <a href="{% url 'detail_project' project.pk %}">
+                        <a href="{% url 'webapp:detail_project' project.pk %}">
                             <i class="fa-2x fa-solid fa-circle-info"></i>
                         </a>
-                        <a href="{% url 'update_project' project.pk %}">
+                        <a href="{% url 'webapp:update_project' project.pk %}">
                             <i class="fa-2x fa-sharp fa-regular fa-pen-to-square"></i>
                         </a>
-                        <a href="{% url 'delete_project' project.pk %}" class="fa-2x fa-solid fa-trash text-danger"></a>
+                        <a href="{% url 'webapp:delete_project' project.pk %}" class="fa-2x fa-solid fa-trash text-danger"></a>
                     </div>
                 </div>
             </div>

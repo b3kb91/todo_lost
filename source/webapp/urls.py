@@ -4,6 +4,8 @@ from webapp.views.issues import IssueDetailView, IssueDeleteView, IssueUpdateVie
 from webapp.views.projects import ProjectDeleteView, ProjectUpdateView, ProjectCreateView, ProjectDetailView, \
     ProjectListView
 
+app_name = 'webapp'
+
 urlpatterns = [
     path('', ProjectListView.as_view(), name='main'),
     path('project/<int:pk>/delete/', ProjectDeleteView.as_view(), name='delete_project'),

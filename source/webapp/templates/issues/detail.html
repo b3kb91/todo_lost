@@ -15,8 +15,8 @@
             <p class="card-text"><strong>Полное описание:</strong><br>{{ issue.description }}</p>
             <p class="card-text"><strong>Дата создания:</strong><br>{{ issue.created_at|date:'Y-m-d' }}</p>
             <p class="card-text"><strong>Дата обновления:</strong><br>{{ issue.updated_at|date:'Y-m-d' }}</p>
-            <a href="{% url 'main' %}" class="fa-2x fa-solid fa-house"></a>
-            <a href="{% url 'delete' issue.pk %}" class="fa-2x fa-solid fa-trash text-danger"></a>
+            <a href="{% url 'webapp:main' %}" class="fa-2x fa-solid fa-house"></a>
+            <a href="{% url 'webapp:delete' issue.pk %}" class="fa-2x fa-solid fa-trash text-danger"></a>
         </div>
     </div>
 {% endblock %}

@@ -10,7 +10,7 @@ class Project(models.Model):
                                    default='Пустое описание')
 
     def get_absolute_url(self):
-        return reverse("detail_project", kwargs={'pk': self.pk})
+        return reverse("webapp:detail_project", kwargs={'pk': self.pk})
 
     def __str__(self):
         return f'{self.title} {self.description}'

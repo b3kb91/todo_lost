@@ -22,13 +22,13 @@ class IssueDetailView(DetailView):
     model = Issue
 
     def get_queryset(self):
-        return Issue.objects.filter(is_deleted=False)
+        return Issue.objects.filter(deleted=False)
 
 
 class IssueDeleteView(DeleteView):
     template_name = 'issues/delete.html'
     model = Issue
-    success_url = reverse_lazy('main')
+    success_url = reverse_lazy('webapp:main')
 
     def delete(self, request, *args, **kwargs):
         self.object = self.get_object()
