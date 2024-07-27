@@ -4,13 +4,19 @@ from django.core.exceptions import ValidationError
 
 class MyUserCreationForm(UserCreationForm):
 
-    def clean_first_name_last_name(self):
-        first_name = self.cleaned_data['first_name']
-        last_name = self.cleaned_data['last_name']
-        if not first_name or last_name:
+    def clean(self):
+        cleaned_data = super().clean()
+        first_name = cleaned_data.get('first_name')
+        last_name = cleaned_data.get('last_name')
+        email = cleaned_data.get('email')
+
+        if not (first_name or last_name):
             raise ValidationError('Введите имя или фамилию')
-        else:
-            return last_name, first_name
+
+        if not email:
+            raise ValidationError('Введите свой email')
+
+        return cleaned_data
 
     class Meta(UserCreationForm.Meta):
         fields = ['username', 'password1', 'password2', 'first_name', 'last_name', 'email']
@@ -18,4 +24,3 @@ class MyUserCreationForm(UserCreationForm):
             "email": {
                 "required": "Поле обязательное"}
         }
-
