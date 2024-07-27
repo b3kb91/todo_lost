@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+
+{% block links %}
+{% endblock %}
+
+{% block content %}
+    <h1>Рeгистрация</h1>
+
+    <form action="" method="post">
+        {% csrf_token %}
+        {% include 'partial/form.html' with button_text='Зарегестрироваться' %}
+    </form>
+{% endblock %}
