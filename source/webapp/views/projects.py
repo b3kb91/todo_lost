@@ -1,5 +1,5 @@
 from django.db.models import Q
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.urls import reverse_lazy
 from django.utils.http import urlencode
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
@@ -56,18 +56,40 @@ class ProjectDetailView(DetailView):
         return context
 
 
-class ProjectCreateView(LoginRequiredMixin, CreateView):
+class ProjectCreateView(PermissionRequiredMixin, LoginRequiredMixin, CreateView):
     template_name = 'projects/create_project.html'
     form_class = ProjectForm
+    permission_required = 'webapp.add_project'
+
+    def has_permission(self):
+        return self.request.user.groups.filter(name='Project Manager').exists()
+
+    def form_valid(self, form):
+        project = form.save(commit=False)
+        project.save()
+        project.users.add(self.request.user)
+        return super().form_valid(form)
 
 
-class ProjectUpdateView(LoginRequiredMixin, UpdateView):
+class ProjectUpdateView(PermissionRequiredMixin, LoginRequiredMixin, UpdateView):
     template_name = 'projects/update_project.html'
     model = Project
     form_class = ProjectForm
+    permission_required = 'webapp.change_project'
+
+    def has_permission(self):
+        project = self.get_object()
+        return (self.request.user.groups.filter(name='Project Manager').exists() and
+                self.request.user in project.users.all())
 
 
-class ProjectDeleteView(LoginRequiredMixin, DeleteView):
+class ProjectDeleteView(PermissionRequiredMixin, LoginRequiredMixin, DeleteView):
     template_name = 'projects/delete_project.html'
     model = Project
     success_url = reverse_lazy('webapp:main')
+    permission_required = 'webapp.delete_project'
+
+    def has_permission(self):
+        project = self.get_object()
+        return (self.request.user.groups.filter(name='Project Manager').exists() and
+                self.request.user in project.users.all())

@@ -30,10 +30,17 @@
                         <a href="{% url 'webapp:detail_project' project.pk %}">
                             <i class="fa-2x fa-solid fa-circle-info"></i>
                         </a>
-                        <a href="{% url 'webapp:update_project' project.pk %}">
-                            <i class="fa-2x fa-sharp fa-regular fa-pen-to-square"></i>
-                        </a>
-                        <a href="{% url 'webapp:delete_project' project.pk %}" class="fa-2x fa-solid fa-trash text-danger"></a>
+                        {% if user.is_authenticated %}
+                            {% if user.has_perms.webapp.change_project or user in project.users.all %}
+                                <a href="{% url 'webapp:update_project' project.pk %}">
+                                    <i class="fa-2x fa-sharp fa-regular fa-pen-to-square"></i>
+                                </a>
+                            {% endif %}
+                            {% if user.has_perms.webapp.delete_project or user in project.users.all %}
+                                <a href="{% url 'webapp:delete_project' project.pk %}"
+                                   class="fa-2x fa-solid fa-trash text-danger"></a>
+                            {% endif %}
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -44,7 +51,7 @@
 {% endblock %}
 
 {% block paginator %}
-    
+
     <div class="paginator mt-4">
         {% if is_paginated %}
             {% include "partial/pagination.html" %}
