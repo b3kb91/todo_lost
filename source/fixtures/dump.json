@@ -136,6 +136,54 @@
     }
 },
 {
+    "model": "webapp.basemodel",
+    "pk": 42,
+    "fields": {
+        "created_at": "2024-07-28T17:39:14.308Z",
+        "updated_at": "2024-07-28T17:39:14.308Z"
+    }
+},
+{
+    "model": "webapp.basemodel",
+    "pk": 43,
+    "fields": {
+        "created_at": "2024-07-28T17:40:34.585Z",
+        "updated_at": "2024-07-28T17:40:34.585Z"
+    }
+},
+{
+    "model": "webapp.basemodel",
+    "pk": 44,
+    "fields": {
+        "created_at": "2024-07-28T17:41:13.881Z",
+        "updated_at": "2024-07-28T17:41:13.881Z"
+    }
+},
+{
+    "model": "webapp.basemodel",
+    "pk": 45,
+    "fields": {
+        "created_at": "2024-07-28T17:41:41.805Z",
+        "updated_at": "2024-07-28T17:41:41.805Z"
+    }
+},
+{
+    "model": "webapp.basemodel",
+    "pk": 46,
+    "fields": {
+        "created_at": "2024-07-28T17:42:22.555Z",
+        "updated_at": "2024-07-28T17:42:22.555Z"
+    }
+},
+{
+    "model": "webapp.basemodel",
+    "pk": 47,
+    "fields": {
+        "created_at": "2024-07-28T17:43:01.656Z",
+        "updated_at": "2024-07-28T17:43:01.656Z"
+    }
+},
+{
     "model": "webapp.issue",
     "pk": 11,
     "fields": {
@@ -205,8 +253,8 @@
         "is_deleted": false,
         "types": [
             1,
-            3,
-            2
+            2,
+            3
         ]
     }
 },
@@ -262,8 +310,8 @@
         "project": 1,
         "is_deleted": false,
         "types": [
-            3,
-            2
+            2,
+            3
         ]
     }
 },
@@ -355,6 +403,78 @@
     }
 },
 {
+    "model": "webapp.issue",
+    "pk": 42,
+    "fields": {
+        "summary": "Задача1",
+        "description": "Задача к проекту1",
+        "statuses": 1,
+        "project": 31,
+        "is_deleted": false,
+        "types": []
+    }
+},
+{
+    "model": "webapp.issue",
+    "pk": 43,
+    "fields": {
+        "summary": "Задача2",
+        "description": "Задача к проекту2",
+        "statuses": 2,
+        "project": 32,
+        "is_deleted": false,
+        "types": []
+    }
+},
+{
+    "model": "webapp.issue",
+    "pk": 44,
+    "fields": {
+        "summary": "Задача3",
+        "description": "Задача к проекту3",
+        "statuses": 3,
+        "project": 33,
+        "is_deleted": false,
+        "types": []
+    }
+},
+{
+    "model": "webapp.issue",
+    "pk": 45,
+    "fields": {
+        "summary": "Задача4",
+        "description": "Задача к проекту3",
+        "statuses": 2,
+        "project": 34,
+        "is_deleted": false,
+        "types": []
+    }
+},
+{
+    "model": "webapp.issue",
+    "pk": 46,
+    "fields": {
+        "summary": "Задача5",
+        "description": "Задача к проекту5",
+        "statuses": 1,
+        "project": 35,
+        "is_deleted": false,
+        "types": []
+    }
+},
+{
+    "model": "webapp.issue",
+    "pk": 47,
+    "fields": {
+        "summary": "Задача6",
+        "description": "Задача к проекту6",
+        "statuses": 1,
+        "project": 37,
+        "is_deleted": false,
+        "types": []
+    }
+},
+{
     "model": "webapp.type",
     "pk": 1,
     "fields": {
@@ -403,7 +523,8 @@
         "start_date": "2024-07-17",
         "end_date": null,
         "title": "Проект11",
-        "description": "aaaaa"
+        "description": "aaaaa",
+        "users": []
     }
 },
 {
@@ -413,7 +534,8 @@
         "start_date": "2024-07-13",
         "end_date": "2024-08-10",
         "title": "beka",
-        "description": "Пустое описание"
+        "description": "Пустое описание",
+        "users": []
     }
 },
 {
@@ -423,7 +545,8 @@
         "start_date": "2024-07-22",
         "end_date": null,
         "title": "22222",
-        "description": "Пустое описание"
+        "description": "Пустое описание",
+        "users": []
     }
 },
 {
@@ -433,7 +556,8 @@
         "start_date": "2024-07-09",
         "end_date": null,
         "title": "55555555",
-        "description": "Пустое описание"
+        "description": "Пустое описание",
+        "users": []
     }
 },
 {
@@ -443,7 +567,8 @@
         "start_date": "2024-07-24",
         "end_date": "2024-07-03",
         "title": "beka2.0",
-        "description": "Пустое описание"
+        "description": "Пустое описание",
+        "users": []
     }
 },
 {
@@ -453,7 +578,103 @@
         "start_date": "2024-07-09",
         "end_date": null,
         "title": "eeerr",
-        "description": "Пустое описание"
+        "description": "Пустое описание",
+        "users": []
+    }
+},
+{
+    "model": "webapp.project",
+    "pk": 31,
+    "fields": {
+        "start_date": "2024-07-28",
+        "end_date": null,
+        "title": "Проект1",
+        "description": "Пустое описание1",
+        "users": [
+            11,
+            12,
+            10,
+            13
+        ]
+    }
+},
+{
+    "model": "webapp.project",
+    "pk": 32,
+    "fields": {
+        "start_date": "2024-07-29",
+        "end_date": null,
+        "title": "Проект2",
+        "description": "Пустое описание2",
+        "users": [
+            11
+        ]
+    }
+},
+{
+    "model": "webapp.project",
+    "pk": 33,
+    "fields": {
+        "start_date": "2024-07-30",
+        "end_date": null,
+        "title": "Проект3",
+        "description": "Пустое описание3",
+        "users": [
+            11,
+            12
+        ]
+    }
+},
+{
+    "model": "webapp.project",
+    "pk": 34,
+    "fields": {
+        "start_date": "2024-07-09",
+        "end_date": null,
+        "title": "Проект4",
+        "description": "Пустое описание4",
+        "users": [
+            11
+        ]
+    }
+},
+{
+    "model": "webapp.project",
+    "pk": 35,
+    "fields": {
+        "start_date": "2024-07-12",
+        "end_date": null,
+        "title": "Проект5",
+        "description": "Пустое описание5",
+        "users": [
+            11
+        ]
+    }
+},
+{
+    "model": "webapp.project",
+    "pk": 36,
+    "fields": {
+        "start_date": "2024-07-10",
+        "end_date": null,
+        "title": "Проект6",
+        "description": "Пустое описание6",
+        "users": [
+            11
+        ]
+    }
+},
+{
+    "model": "webapp.project",
+    "pk": 37,
+    "fields": {
+        "start_date": "2024-03-05",
+        "end_date": null,
+        "title": "Проект7",
+        "description": "Пустое описание7",
+        "users": [
+            11
+        ]
     }
 }
 ]
