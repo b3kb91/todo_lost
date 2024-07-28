@@ -1,5 +1,9 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
+from django import forms
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
 
 
 class MyUserCreationForm(UserCreationForm):
@@ -24,3 +28,9 @@ class MyUserCreationForm(UserCreationForm):
             "email": {
                 "required": "Поле обязательное"}
         }
+
+
+class UserForm(forms.Form):
+    users = forms.ModelMultipleChoiceField(queryset=User.objects.all(), widget=forms.CheckboxSelectMultiple,
+                                           required=False)
+

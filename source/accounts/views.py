@@ -1,36 +1,13 @@
-from django.contrib.auth import authenticate, login, logout, get_user_model
+from django.contrib.auth import login, get_user_model
 from django.http import HttpResponseRedirect
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
-from django.views.generic import CreateView
+from django.views.generic import CreateView, View
 
-from accounts.forms import MyUserCreationForm
+from accounts.forms import MyUserCreationForm, UserForm
+from webapp.models import Project
 
 User = get_user_model()
-
-
-# Create your views here.
-
-def login_view(request):
-    context = {}
-    if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        next_path = request.POST.get('next', "webapp:main")
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            print(next_path, "next_path")
-            return redirect(next_path)
-        else:
-            context['has_error'] = True
-    context["next_param"] = request.GET.get('next')
-    return render(request, 'login.html', context=context)
-
-
-def logout_view(request):
-    logout(request)
-    return redirect('webapp:main')
 
 
 class RegistrationView(CreateView):
@@ -52,3 +29,21 @@ class RegistrationView(CreateView):
         if not next_url:
             next_url = reverse('webapp:main')
         return next_url
+
+
+class UsersView(View):
+    def get(self, request, pk):
+        project = get_object_or_404(Project, pk=pk)
+        form = UserForm(initial=
+                        {'users': project.users.all()}
+                        )
+        return render(request, 'user_create_project.html', {'project': project, 'form': form})
+
+    def post(self, request, pk):
+        project = get_object_or_404(Project, pk=pk)
+        form = UserForm(request.POST)
+        if form.is_valid():
+            users = form.cleaned_data['users']
+            project.users.set(users)
+            return redirect(reverse('webapp:detail_project', kwargs={'pk': pk}))
+        return render(request, 'user_create_project.html', {'project': project, 'form': form})

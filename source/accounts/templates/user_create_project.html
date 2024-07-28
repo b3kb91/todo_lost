@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <br><h1>Управление пользователем проекта: <strong>{{ project.title }}</strong></h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-primary" type="submit">Сохранить изменения</button>
+    </form>
+    <br><a href="{% url 'webapp:detail_project' pk=project.pk %}">
+        <i class="fa-solid fa-backward fa-2xl"></i>
+    </a>
+{% endblock %}<i class="fa-solid fa-backward fa-2xl"></i>
